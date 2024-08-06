@@ -1,0 +1,115 @@
+{
+    "id": "420",
+    "name": "Linan Altan",
+
+
+    "maxHP": "58",
+    "currentHP": "58",
+    "maxEP": "8",
+    "currentEP": "8",
+    "maxMagic": "53",
+    "currentMagic": "53",
+
+    "graphicUrl":"https://s9.gifyu.com/images/SZnSX.png",
+
+    "about": [{"label":"pronounce","description":"ona/jej","id":"0fcff79d897e89fd"},{"label":"agility","description":"d10","id":"77ed86816e4700bd"},{"label":"power","description":"d8","id":"ead742874309dc73"},{"label":"will","description":"d6","id":"9ecaa121e95a3154"},{"label":"inside","description":"d8","id":"4e8ebda7e5bfbad2"},{"label":"initiative","description":"0","id":"b7ecdfaf93a082ae"},{"label":"armor","description":"13","id":"690fbed230e81c47"},{"label":"magicalDefence","description":"9","id":"e2354b95a6e78aab"},{"label":"identity","description":"Księżniczka piratów","id":"dc8d5cfa2f98ff0e"},{"label":"theme","description":"Ambicja","id":"d4017d09cc08aaec"},{"label":"origin","description":"Wyspy Morag","id":"17bed71d1d8b37a1"},{"label":"level","description":"8","id":"d76c4dc0a61eb363"},{"label":"classes","description":"Mistrzyni broni, Łotrzyca, Strzelczyni wyborowa","id":"6be30de3af5821df"},{"label":"experience","description":"0","id":"d32aafa143adb77d"},{"label":"fabulaPoints","description":"5","id":"bfae8ba676ff9128"}],
+
+    "actions": [
+        {
+            "label": "Atak",
+            "description": "Przeprowadzasz atak wręcz lub na dystans.",
+            "id": "12a1d424-1c57-49d2-a036-a5b0b5815c5c"
+        },
+        {
+            "label": "Cel",
+            "description": "Starasz się osiągnąć konkretny cel.",
+            "id": "de2fe08b-2a4d-41d7-a1cf-b2c87407927f"
+        },
+        {
+            "label": "Ekwipunek",
+            "description": "Wydaj Punkty Ekwipunku, aby stworzyć i natychmiast wykorzystać\nprzedmiot jednorazowego użytku.",
+            "id": "1e559d40-193c-4b66-9ecc-f1140f977ea0"
+        },
+        {
+            "label": "Obrona",
+            "description": "Tylko raz na turę. Do rozpoczęcia swojej kolejnej tury:\n Zyskujesz Odporność na wszystkie rodzaje obrażeń.\n Dostajesz premię +2 do wszystkich Testów Przeciwstawnych.\n Możesz zapewnić osłonę innej istocie, aby wrogowie nie mogli zaatakować jej wręcz.",
+            "id": "8afe139e-93bf-45d1-a208-0837c86dda5f"
+        },
+        {
+            "label": "Obserwacja",
+            "description": "Starasz się zdobyć informacje na temat kogoś lub czegoś.\n Z reguły musisz wykonać Test Otwarty 【WJ + WJ】.",
+            "id": "61b6a996-12a1-49ab-88e4-3842ab20222a"
+        },
+        {
+            "label": "Wyposażenie",
+            "description": "Zamieniasz dowolną liczbę przedmiotów z wyposażenia na dowolną liczbę przedmiotów z twojego plecaka.\n Ta akcja nie dotyczy zbroi.",
+            "id": "f58692de-0245-4767-bbb3-e2758b6d1550"
+        },
+        {
+            "label": "Zwód",
+            "description": "Wykonaj Test (PT 10) przeciwko jednemu wrogowi. Jeśli odniesiesz\nsukces, przeciwnik ulega oszołomieniu, roztrzęsieniu, spowolnieniu albo osłabieniu.",
+            "id": "f7dbdf59-b499-413f-8736-092d89099f8d"
+        }
+    ],
+    "EQ": [
+        {
+            "label": "Rapier",
+            "description": "Broń jednoręczna, [ZR + WJ], [WW + 6] obrażenia fizyczne",
+            "id": "f04b32d4-56bc-42c1-84fb-b6b662bdf933"
+        },
+        {
+            "label": "Tunika bojowa",
+            "description": "Pancerz: ZR + 1 Pancerz Magiczny: WJ +1",
+            "id": "dd758292-6164-4d0c-a2f0-78fab8a11fcc"
+        },
+        {
+            "label": "Runiczna tarcza",
+            "description": "Pancerz: +2 Pancerz Magiczny: + 2",
+            "id": "390f7e13-1086-4c0a-bec4-955533658f5c"
+        },
+        {
+            "label": "Pistolet Kapitana Piratów",
+            "description": "ZR + WJ + 1, OBR WW+12",
+            "id": "3f428b95-8855-4f1c-99f9-450fa6fe50a8"
+        },
+        {
+            "label": "Zenity",
+            "description": "770",
+            "id": "68c02376-54ac-4569-a6ac-0ffee8e8ae65"
+        }
+    ],
+    "rolls": [],
+    "spells": [],
+    "skills": [
+        {
+            "label": "Tania sztuczka",
+            "description": "Gdy uderzysz przeciwnika podczas akcji ataku – jeżeli celem była tylko jedna istota, która cierpi z powodu co najmniej jednego stanu – możesz zadać mu dodatkowe obrażenia\nrówne 【PU × liczba stanów, którym aktualnie ulega].",
+            "id": "fff7ee56-dd6a-4b86-a01f-0f1c2dfcb9d4",
+            "investedPoints": "1"
+        },
+        {
+            "label": "Mistrzostwo broni dystansowej",
+            "description": "Zyskujesz premię równą【PU】 do wszystkich Testów Precyzji przy użyciu broni dystansowej.",
+            "id": "196db339-c9e0-4867-9152-f79e37dcbd31",
+            "investedPoints": "1"
+        },
+        {
+            "label": "Oko za oko!",
+            "description": "Po tym, jak przeciwnik wyprowadzi przeciwko tobie atak przy użyciu broni białej (niezależnie od tego, czy trafił, czy też nie) – o ile jego wynik w Teście Precyzji był parzysty – możesz\nprzeprowadzić darmowy atak przeciwko niemu (po rozpatrzeniu wszystkich efektów ataku\nprzeciwnika). Musisz skorzystać z broni białej, a celem twojego ataku może być jedynie ten\nkonkretny wróg. Przy obliczaniu obrażeń twojego ataku Wyższy Wynik (WW) wynosi 0.",
+            "id": "173b64e5-db9a-46bb-9947-9d1253e9d2fb",
+            "investedPoints": "1"
+        },
+        {
+            "label": "Nawałnica ostrzy",
+            "description": "Gdy przeprowadzasz atak bronią białą, możesz wydać 10 Punktów Mocy, aby wybrać\njedno: przeprowadzasz wieloatak (2); lub zwiększasz właściwości wieloataku o jeden,\nmaksymalnie do wieloataku (3).",
+            "id": "13e86aa9-85e1-4630-8c10-ae5788772f22",
+            "investedPoints": "1"
+        },
+        {
+            "label": "Mistrzostwo broni białej",
+            "description": "Zyskujesz premię równą 【PU】 do wszystkich Testów Precyzji przy użyciu broni białej.",
+            "id": "b719f6e4-6fdc-425e-8b99-f2641504e133",
+            "investedPoints": "4"
+        }
+    ]
+}

@@ -1,0 +1,117 @@
+{
+    "id": "69",
+    "name": "Kuka",
+
+    "maxHP": "38",
+    "currentHP": "38",
+    "maxEP": "10",
+    "currentEP": "10",
+    "maxMagic": "48",
+    "currentMagic": "38",
+
+    "graphicURL": "https://s12.gifyu.com/images/SZF79.jpg",
+
+    "about": [{"label":"armor","description":"11","id":"a0fd29990f303e17"},{"label":"magicalDefence","description":"10","id":"59eff4dc5d4b1e66"},{"label":"pronounce","description":"ona/jej","id":"7d76ca8fd8f3f53a"},{"label":"agility","description":"d10","id":"e2a590c00b5c343b"},{"label":"power","description":"d6","id":"283261ef5e958ee1"},{"label":"will","description":"d6","id":"f9b3baceff8e7ce3"},{"label":"inside","description":"d10","id":"73e7008dece0e369"},{"label":"initiative","description":"0","id":"3c70ecd7d326629b"},{"label":"identity","description":"Magiczna weteranka odnowicielka Gnomlandu","id":"4f765c772d386b25"},{"label":"theme","description":"Chaos","id":"1d0f7dbd9b9c7ff2"},{"label":"origin","description":"Gnomland","id":"6ca26f8d43144233"},{"label":"level","description":"8","id":"ce07b25582fe10ab"},{"label":"classes","description":"Elementalistka, Łotrzyca, Druidka","id":"7b167b764c5ebdb4"},{"label":"experience","description":"0","id":"d4e7588badc8bcc8"},{"label":"fabulaPoints","description":"1+1 (na dzień)","id":"db789b3fdb667616"}],
+
+    "actions": [
+        {
+            "label": "Atak",
+            "description": "Przeprowadzasz atak wręcz lub na dystans.",
+            "id": "12a1d424-1c57-49d2-a036-a5b0b5815c5c"
+        },
+        {
+            "label": "Cel",
+            "description": "Starasz się osiągnąć konkretny cel.",
+            "id": "de2fe08b-2a4d-41d7-a1cf-b2c87407927f"
+        },
+        {
+            "label": "Ekwipunek",
+            "description": "Wydaj Punkty Ekwipunku, aby stworzyć i natychmiast wykorzystać\nprzedmiot jednorazowego użytku.",
+            "id": "1e559d40-193c-4b66-9ecc-f1140f977ea0"
+        },
+        {
+            "label": "Obrona",
+            "description": "Tylko raz na turę. Do rozpoczęcia swojej kolejnej tury:\n Zyskujesz Odporność na wszystkie rodzaje obrażeń.\n Dostajesz premię +2 do wszystkich Testów Przeciwstawnych.\n Możesz zapewnić osłonę innej istocie, aby wrogowie nie mogli zaatakować jej wręcz.",
+            "id": "8afe139e-93bf-45d1-a208-0837c86dda5f"
+        },
+        {
+            "label": "Obserwacja",
+            "description": "Starasz się zdobyć informacje na temat kogoś lub czegoś.\n Z reguły musisz wykonać Test Otwarty 【WJ + WJ】.",
+            "id": "61b6a996-12a1-49ab-88e4-3842ab20222a"
+        },
+        {
+            "label": "Wyposażenie",
+            "description": "Zamieniasz dowolną liczbę przedmiotów z wyposażenia na dowolną liczbę przedmiotów z twojego plecaka.\n Ta akcja nie dotyczy zbroi.",
+            "id": "f58692de-0245-4767-bbb3-e2758b6d1550"
+        },
+        {
+            "label": "Zwód",
+            "description": "Wykonaj Test (PT 10) przeciwko jednemu wrogowi. Jeśli odniesiesz\nsukces, przeciwnik ulega oszołomieniu, roztrzęsieniu, spowolnieniu albo osłabieniu.",
+            "id": "f7dbdf59-b499-413f-8736-092d89099f8d"
+        }
+    ],
+    "EQ": [
+        {
+            "label": "Bicz łańcuchowy",
+            "description": "Broń dwuręczna, [ZR + ZR], [WW + 8] obrażenia fizyczne",
+            "id": "f04b32d4-56bc-42c1-84fb-b6b662bdf933"
+        },
+        {
+            "label": "Tunika bojowa",
+            "description": "Pancerz: ZR + 1 Pancerz Magiczny: WJ +1",
+            "id": "dd758292-6164-4d0c-a2f0-78fab8a11fcc"
+        },
+        {
+            "label": "Stalowy sztylet",
+            "description": "Broń jednoręczna, [ZR + WJ + 1], [WW + 4} obrażenia fizyczne",
+            "id": "ead476fe-2e7f-40c0-b7a8-006e01e05d70"
+        }
+    ],
+    "rolls": [],
+    "spells": [
+        {
+            "label": "Broń Żywiołów",
+            "description": "Napełniasz broń mocą żywiołów. Wybierz jeden rodzaj obrażeń: powietrzne, elektryczne,\nziemne, ogniste bądź lodowe. Dopóki zaklęcie pozostaje w mocy, broń zadaje obrażenia\nwybranego przez ciebie żywiołu. Rzucając to zaklęcie na broń, która znajduje się aktualnie\nna twoim wyposażeniu, możesz przeprowadzić darmowy atak w ramach tej samej akcji.\nMożesz rzucić to zaklęcie jedynie na broń kogoś, kto wyraził na to zgodę.",
+            "id": "4b88c1c1-19e3-4b94-a062-d6b716e694e8",
+            "target": "Jedna broń",
+            "duration": "Jedna scena",
+            "magicCost": "10"
+        },
+        {
+            "label": "Całun Żywiołów",
+            "description": "Możesz utkać całun z  magicznej energii i  tym samym zapewnić wybranym celom\nochronę przed furią żywiołów. Wybierz jeden rodzaj obrażeń: powietrzne, elektryczne,\nziemne, ogniste bądź lodowe. Dopóki zaklęcie pozostaje w  mocy, każdy cel zyskuje\nOdporność na wybrany rodzaj obrażeń.",
+            "id": "32083013-22b6-4ec4-ba14-6e0b8baeb456",
+            "target": "Do 3 istot",
+            "duration": "Błyskawiczny",
+            "magicCost": "5 × cel"
+        },
+        {
+            "label": "Niebosiężne Uderzenie",
+            "description": "Twoje uderzenia szybują po polu bitwy na skrzydłach wiatru. Możesz natychmiast przeprowadzić darmowy atak przy użyciu broni białej znajdującej się na twoim wyposażeniu. Możesz obrać za cel istoty, których normalnie dosięgają jedynie ataki dystansowe.\nJeżeli przeprowadzisz atak przy użyciu broni do bijatyki lub włóczni, zadajesz 5 dodatkowych obrażeń.\nJeżeli twój cel znajduje się w powietrzu, możesz natychmiast zmusić go do lądowania.",
+            "id": "76805fdd-d0e4-41ed-a8e2-1de30b7f92ab",
+            "target": "Ty",
+            "duration": "Błyskawiczny",
+            "magicCost": "10"
+        }
+    ],
+    "skills": [
+        {
+            "label": "Magia żywiołów",
+            "description": "Możesz używać zaklęć elementalistki. Ofensywne zaklęcia wymagają testu [WJ + SW].",
+            "id": "fff7ee56-dd6a-4b86-a01f-0f1c2dfcb9d4",
+            "investedPoints": "3"
+        },
+        {
+            "label": "Do zobaczenia!",
+            "description": "Możesz wykorzystać akcję i wydać 1 Punkt Fabuli, aby rozpłynąć się w powietrzu podczas\nobecnej sceny, a  następnie pojawić się ponownie podczas innej sceny, w  której bierze\nudział co najmniej jedna postać innego gracza. Opisz, jak wyglądała twoja wielka ucieczka\ni jakim cudem się tutaj znalazłaś!",
+            "id": "196db339-c9e0-4867-9152-f79e37dcbd31",
+            "investedPoints": "1"
+        },
+        {
+            "label": "Skradziona dusza",
+            "description": "Możesz wykorzystać akcję i wykonać Test 【ZR + SW】 przeciwko wartości Magicznego Pancerza istoty znajdującej się w zasięgu twojego wzroku. Jeżeli odniesiesz sukces, a cel jest\nżołnierzem, odzyskujesz Punkty Ekwipunku równe 【PU】; jeżeli cel jest elitarnym wrogiem\nbądź czempionem, MG informuje cię, jaki jest jego skarb duszy – czyli przedmiot warty\nmaksymalnie tyle zenitów, ile wynosi 【poziom celu × 30】lub 【poziom celu × 50】, jeśli\ncel jest Złoczyńcą. Skarb duszy pojawi się w twoim plecaku. Możesz wykorzystać tę umiejętność przeciwko tej samej istocie tylko raz.\nDo wymaganego Testu 【ZR + SW】 zyskujesz premię równą 【PU】.",
+            "id": "173b64e5-db9a-46bb-9947-9d1253e9d2fb",
+            "investedPoints": "1"
+        }
+    ]
+}

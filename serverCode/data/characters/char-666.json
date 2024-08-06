@@ -1,0 +1,147 @@
+{
+    "id": "666",
+    "name": "Kokuen Hitori",
+
+
+    "maxHP": "53",
+    "currentHP": "53",
+    "maxEP": "6",
+    "currentEP": "6",
+    "maxMagic": "58",
+    "currentMagic": "58",
+
+    "about": [{"label":"pronounce","description":"on/jego","id":"31a9f4ca8adcaf8d"},{"label":"agility","description":"d8","id":"e6d071c01c743744"},{"label":"power","description":"d8","id":"8d8fa7d4fcb61591"},{"label":"will","description":"d8","id":"4188a20b5e9089d5"},{"label":"inside","description":"d8","id":"56c282567d113c58"},{"label":"initiative","description":"-3","id":"257d407a30440452"},{"label":"armor","description":"11","id":"503e14670243e11d"},{"label":"magicalDefence","description":"9","id":"9335c1e80e4d0c16"},{"label":"identity","description":"Aspirujący król szamanów","id":"7efa4eebeb857020"},{"label":"theme","description":"Ambicja","id":"a317136f7e5f6451"},{"label":"graphicUrl","description":"https://s12.gifyu.com/images/SZnzR.jpg","id":"f64689b0df9669c7"},{"label":"origin","description":"Wioska małego ołówka","id":"e59579ba7b680dbd"},{"label":"level","description":"8","id":"e72c41aca2c224e1"},{"label":"classes","description":"Mistrz ostrza, Mistyk, Medium","id":"9ed6a6264336257e"},{"label":"experience","description":"0","id":"ef0c3e62d839ce9d"},{"label":"fabulaPoints","description":"1","id":"62e030663c0586ca"}],
+    "actions": [
+        {
+            "label": "Atak",
+            "description": "Przeprowadzasz atak wręcz lub na dystans.",
+            "id": "12a1d424-1c57-49d2-a036-a5b0b5815c5c"
+        },
+        {
+            "label": "Cel",
+            "description": "Starasz się osiągnąć konkretny cel.",
+            "id": "de2fe08b-2a4d-41d7-a1cf-b2c87407927f"
+        },
+        {
+            "label": "Ekwipunek",
+            "description": "Wydaj Punkty Ekwipunku, aby stworzyć i natychmiast wykorzystać\nprzedmiot jednorazowego użytku.",
+            "id": "1e559d40-193c-4b66-9ecc-f1140f977ea0"
+        },
+        {
+            "label": "Obrona",
+            "description": "Tylko raz na turę. Do rozpoczęcia swojej kolejnej tury:\n Zyskujesz Odporność na wszystkie rodzaje obrażeń.\n Dostajesz premię +2 do wszystkich Testów Przeciwstawnych.\n Możesz zapewnić osłonę innej istocie, aby wrogowie nie mogli zaatakować jej wręcz.",
+            "id": "8afe139e-93bf-45d1-a208-0837c86dda5f"
+        },
+        {
+            "label": "Obserwacja",
+            "description": "Starasz się zdobyć informacje na temat kogoś lub czegoś.\n Z reguły musisz wykonać Test Otwarty 【WJ + WJ】.",
+            "id": "61b6a996-12a1-49ab-88e4-3842ab20222a"
+        },
+        {
+            "label": "Wyposażenie",
+            "description": "Zamieniasz dowolną liczbę przedmiotów z wyposażenia na dowolną liczbę przedmiotów z twojego plecaka.\n Ta akcja nie dotyczy zbroi.",
+            "id": "f58692de-0245-4767-bbb3-e2758b6d1550"
+        },
+        {
+            "label": "Zwód",
+            "description": "Wykonaj Test (PT 10) przeciwko jednemu wrogowi. Jeśli odniesiesz\nsukces, przeciwnik ulega oszołomieniu, roztrzęsieniu, spowolnieniu albo osłabieniu.",
+            "id": "f7dbdf59-b499-413f-8736-092d89099f8d"
+        }
+    ],
+    "EQ": [
+        {
+            "label": "Katana",
+            "description": "Broń dwuręczna, [ZR + WJ] + 4, [WW + 10] obrażenia fizyczne",
+            "id": "f04b32d4-56bc-42c1-84fb-b6b662bdf933"
+        },
+        {
+            "label": "Runiczna Zbroja Płytowa ",
+            "description": "Pancerz: 11 Pancerz Magiczny: WJ +1",
+            "id": "dd758292-6164-4d0c-a2f0-78fab8a11fcc"
+        },
+        {
+            "label": "Więź z Kuką",
+            "description": "Nieufność",
+            "id": "6a682ab3-3c53-486b-919b-b7890fe5822e"
+        },
+        {
+            "label": "Ołówek czarodzieja",
+            "description": "Zarąbany ołówek z gabinetu",
+            "id": "32404989-6cf7-4bb0-a41e-ff1ea251ecf8"
+        },
+        {
+            "label": "Więź z Linan",
+            "description": "Podziw",
+            "id": "cb00b63f-734a-400b-9c00-ec38bcedcdd0"
+        },
+        {
+            "label": "Rytuał (Entropizm)",
+            "description": "Przywołuje osobę która ci pomoże",
+            "id": "cf7e2fd5-8a3d-4d90-9d8a-7273f226573b"
+        },
+        {
+            "label": "Zenity",
+            "description": "220",
+            "id": "899569c0-56b4-4073-909c-2076a6cc192e"
+        },
+        {
+            "label": "Sztylet",
+            "description": "Nowy przedmiot",
+            "id": "e058c015-a9d6-4e08-8fcb-878820305f7c"
+        },
+        {
+            "label": "Gadający ołówek stand-uper",
+            "description": "Nowy przedmiot",
+            "id": "456d33ae-af1b-4c51-9214-2e47aa80541f"
+        }
+    ],
+    "rolls": [],
+    "spells": [
+        {
+            "label": "Leczenie",
+            "description": "Wzmacniasz swoich towarzyszy: łagodzisz ich ból i pozwalasz otrząsnąć się ze zmęczenia. Każdy cel odzyskuje 40 Punktów Życia. Jeżeli masz co najmniej 20 poziom, cele\nodzyskują 50 Punktów Życia. Jeżeli masz co najmniej 40 poziom, cele odzyskują 60\nPunktów Życia.",
+            "id": "656968a6-98e3-4c3f-90a0-8a56b21b1073",
+            "target": "Do trzech istot",
+            "duration": "Błyskawiczny",
+            "magicCost": "10 × cel"
+        }
+    ],
+    "skills": [
+        {
+            "label": "Spętanie i Przywołanie",
+            "description": "Aby przywołać spętane Arkanum, musisz wykorzystać akcję i wydać 40 Punktów Mocy.\n\nArkanum wieży.\nDomeny: osąd, ochrona, poświęcenie.\n\nJedność: Przywołując Arkanum Wieży, wybierz jeden rodzaj spośród powietrznych,\nelektrycznych, mrocznych, ziemnych, ognistych lub lodowych obrażeń. Dopóki Arkanum nie ulegnie rozproszeniu, każdy z twoich sprzymierzeńców zyskuje Odporność na\nwybrany rodzaj obrażeń (twój bohater nie zyskuje Odporności).\n\nRozproszenie: Dzień sądu. Wybierz dowolną liczbę istot w zasięgu wzroku: każda z nich odnosi 30\nświetlistych obrażeń. Ten atak ignoruje Odporności.",
+            "id": "fff7ee56-dd6a-4b86-a01f-0f1c2dfcb9d4",
+            "investedPoints": "1"
+        },
+        {
+            "label": "Duchowa magia",
+            "description": "Ofensywne zaklęcia Medium wymagają Testu Magii na [WJ + SW].",
+            "id": "196db339-c9e0-4867-9152-f79e37dcbd31",
+            "investedPoints": "1"
+        },
+        {
+            "label": "Oko za oko!",
+            "description": "Po tym, jak przeciwnik wyprowadzi przeciwko tobie atak przy użyciu broni białej (niezależnie od tego, czy trafił, czy też nie) – o ile jego wynik w Teście Precyzji był parzysty – możesz\nprzeprowadzić darmowy atak przeciwko niemu (po rozpatrzeniu wszystkich efektów ataku\nprzeciwnika). Musisz skorzystać z broni białej, a celem twojego ataku może być jedynie ten\nkonkretny wróg. Przy obliczaniu obrażeń twojego ataku Wyższy Wynik (WW) wynosi 0.",
+            "id": "173b64e5-db9a-46bb-9947-9d1253e9d2fb",
+            "investedPoints": "1"
+        },
+        {
+            "label": "Nawałnica ostrzy",
+            "description": "Gdy przeprowadzasz atak bronią białą, możesz wydać 10 Punktów Mocy, aby wybrać\njedno: przeprowadzasz wieloatak (2); lub zwiększasz właściwości wieloataku o jeden,\nmaksymalnie do wieloataku (3).",
+            "id": "13e86aa9-85e1-4630-8c10-ae5788772f22",
+            "investedPoints": "1"
+        },
+        {
+            "label": "Mistrzostwo broni białej",
+            "description": "Zyskujesz premię równą 【PU】 do wszystkich Testów Precyzji przy użyciu broni białej.",
+            "id": "b719f6e4-6fdc-425e-8b99-f2641504e133",
+            "investedPoints": "4"
+        },
+        {
+            "label": "Rytuały",
+            "description": "Rytualizm",
+            "id": "a31514e6-44a6-490b-9237-f42eb00d1abb",
+            "investedPoints": "1"
+        }
+    ]
+}
