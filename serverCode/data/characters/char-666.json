@@ -9,6 +9,8 @@
     "currentEP": "6",
     "maxMagic": "58",
     "currentMagic": "58",
+    "graphicUrl":"https://s12.gifyu.com/images/SZnzR.jpg",
+
 
     "about": [{"label":"pronounce","description":"on/jego","id":"31a9f4ca8adcaf8d"},{"label":"agility","description":"d8","id":"e6d071c01c743744"},{"label":"power","description":"d8","id":"8d8fa7d4fcb61591"},{"label":"will","description":"d8","id":"4188a20b5e9089d5"},{"label":"inside","description":"d8","id":"56c282567d113c58"},{"label":"initiative","description":"-3","id":"257d407a30440452"},{"label":"armor","description":"11","id":"503e14670243e11d"},{"label":"magicalDefence","description":"9","id":"9335c1e80e4d0c16"},{"label":"identity","description":"Aspirujący król szamanów","id":"7efa4eebeb857020"},{"label":"theme","description":"Ambicja","id":"a317136f7e5f6451"},{"label":"graphicUrl","description":"https://s12.gifyu.com/images/SZnzR.jpg","id":"f64689b0df9669c7"},{"label":"origin","description":"Wioska małego ołówka","id":"e59579ba7b680dbd"},{"label":"level","description":"8","id":"e72c41aca2c224e1"},{"label":"classes","description":"Mistrz ostrza, Mistyk, Medium","id":"9ed6a6264336257e"},{"label":"experience","description":"0","id":"ef0c3e62d839ce9d"},{"label":"fabulaPoints","description":"1","id":"62e030663c0586ca"}],
     "actions": [

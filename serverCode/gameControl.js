@@ -1,9 +1,11 @@
 const auth = require('./auth.js');
 const character = require('./characterManagement.js');
+const crypto = require("crypto");
 
 const initiative = [];
 let activeInitiativeElement = 0;
-const hpList = [];
+const characterBars = [];
+const clocks = [];
 
 exports.handleInitiative = function(io, socket){
     socket.on('initiative-entry', entry => {
@@ -43,42 +45,85 @@ exports.handleInitiative = function(io, socket){
 }
 
 exports.handleCombat = function (io, socket) {
-    socket.on('get-hps', () =>{
-        socket.emit('update-hps', hpList);
+    socket.on('get-character-bars', () =>{
+        socket.emit('character-bars', characterBars);
     })
 
-    socket.on('toogle-hp-bar', payload => {
+    socket.on('get-clocks', () =>{
+        socket.emit('clocks-data', clocks);
+    })
+
+    socket.on('toogle-character-bar', payload => {
         const {userID, characterID} = {...payload};
         if (!auth.isGM(userID)) return;
-        const index = hpList.findIndex(c => c.id === characterID);
+        const index = characterBars.findIndex(c => c.id === characterID);
         if (index === -1){
-            const newHP = character.getHP(characterID);
-            hpList.push(newHP);
+            const newBar = character.getCharacterBar(characterID);
+            console.log(newBar)
+            characterBars.push(newBar);
         }
-        else  removeCharacterHP(index);
+        else  removeCharacterBar(index);
 
-        io.emit('update-hps', hpList);
+        io.emit('character-bars', characterBars);
 
     })
 
-    socket.on('change-hp', payload => {
-        const {value, max, userID, characterID} = payload;
+    socket.on('change-character-bar', payload => {
+        const {value, max, section, userID, characterID} = payload;
+        if (section !== 'HP' && section !== 'PM' && section !== 'EP') return;
         if (!auth.checkAuth(userID, characterID)) return;
         if (typeof value !== 'number' || typeof max !== 'number') return;
         if (max < 0 || value < 0 || value > max) return;
-        const toChange = hpList.find(hp => hp.id === characterID);
+        const toChange = characterBars.find(bar => bar.id === characterID);
         if (!toChange) return;
-        toChange.maxHP = max;
-        toChange.currentHP = value;
-        io.emit('update-hps', hpList);
-
+        toChange[section].max = max;
+        toChange[section].current = value;
+        io.emit('character-bars', characterBars);
     })
+
+    socket.on('clock-order', payload => {
+        const {userID, clockID, order, newLabel, newSegments} = payload;
+        if (!auth.isGM(userID)) return;
+        if (order === 'append') {addClock(newLabel, newSegments); io.emit('clocks-data', clocks); return};
+        const currentClockIndex = clocks.findIndex(cl => cl.id === clockID);
+        if (!currentClockIndex && currentClockIndex !== 0) return;
+        if (order === 'plus') increaseClock(currentClockIndex);
+        if (order === 'minus') decreaseClock(currentClockIndex);
+        if (order === 'delete') clocks.splice(currentClockIndex, 1); 
+        io.emit('clocks-data', clocks);
+    });
+
 }
 
-function removeCharacterHP(arrayIndex){
-    const currentCharacter = hpList[arrayIndex];
-    character.setHP(currentCharacter.id, {maxHP: currentCharacter.maxHP, currentHP: currentCharacter.currentHP});
-    hpList.splice(arrayIndex, 1);
+function addClock(clockLabel, segments){
+    const newClock = {
+        segments: segments,
+        completedSegments: 0,
+        id: crypto.randomBytes(8).toString("hex"),
+        label: clockLabel
+    }
+
+    clocks.push(newClock);
+}
+
+function increaseClock(arrayID){
+    const currentClock = clocks[arrayID];
+    if (currentClock.completedSegments >= currentClock.segments) return;
+    currentClock.completedSegments++;
+    return;
+}
+
+function decreaseClock(arrayID){
+    const currentClock = clocks[arrayID];
+    if (currentClock.completedSegments <= 0) return;
+    currentClock.completedSegments--;
+    return;
+}
+
+function removeCharacterBar(arrayIndex){
+    const currentCharacter = characterBars[arrayIndex];
+    // character.setHP(currentCharacter.id, {maxHP: currentCharacter.maxHP, currentHP: currentCharacter.currentHP});
+    characterBars.splice(arrayIndex, 1);
 }
 
 function initiativeManipulation(textValue, io){

@@ -9,7 +9,7 @@
     "maxMagic": "48",
     "currentMagic": "38",
 
-    "graphicURL": "https://s12.gifyu.com/images/SZF79.jpg",
+    "graphicUrl": "https://s12.gifyu.com/images/SZF79.jpg",
 
     "about": [{"label":"armor","description":"11","id":"a0fd29990f303e17"},{"label":"magicalDefence","description":"10","id":"59eff4dc5d4b1e66"},{"label":"pronounce","description":"ona/jej","id":"7d76ca8fd8f3f53a"},{"label":"agility","description":"d10","id":"e2a590c00b5c343b"},{"label":"power","description":"d6","id":"283261ef5e958ee1"},{"label":"will","description":"d6","id":"f9b3baceff8e7ce3"},{"label":"inside","description":"d10","id":"73e7008dece0e369"},{"label":"initiative","description":"0","id":"3c70ecd7d326629b"},{"label":"identity","description":"Magiczna weteranka odnowicielka Gnomlandu","id":"4f765c772d386b25"},{"label":"theme","description":"Chaos","id":"1d0f7dbd9b9c7ff2"},{"label":"origin","description":"Gnomland","id":"6ca26f8d43144233"},{"label":"level","description":"8","id":"ce07b25582fe10ab"},{"label":"classes","description":"Elementalistka, Łotrzyca, Druidka","id":"7b167b764c5ebdb4"},{"label":"experience","description":"0","id":"d4e7588badc8bcc8"},{"label":"fabulaPoints","description":"1+1 (na dzień)","id":"db789b3fdb667616"}],
 

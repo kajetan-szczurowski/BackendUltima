@@ -9,6 +9,8 @@
     "currentEP": "10",
     "maxMagic": "52",
     "currentMagic": "42",
+    "graphicUrl":"https://s9.gifyu.com/images/SZnMV.jpg",
+
 
     "about": [{"label":"pronounce","description":"?? / ??","id":"f077671244b75430"},{"label":"agility","description":"d8","id":"da8bd8fa4cc2ae29"},{"label":"power","description":"d6","id":"7ed108334f9f0ecb"},{"label":"will","description":"d8","id":"6dbe56a9ad57bcda"},{"label":"inside","description":"d10","id":"ad968257a9ea8692"},{"label":"initiative","description":"-1","id":"1b24f38fdead86a4"},{"label":"armor","description":"9","id":"db3fb79f0eb6bc6e"},{"label":"magicalDefence","description":"11","id":"99f3a37d3b3a5c70"},{"label":"identity","description":"Profesor odkrywca","id":"de4c61281d12f736"},{"label":"theme","description":"Obowiązek","id":"f1271f2b81055d55"},{"label":"graphicUrl","description":"https://s9.gifyu.com/images/SZnMV.jpg","id":"fa331766243901e0"},{"label":"origin","description":"Uniwersytet","id":"a5e6ad184a67ea41"},{"label":"level","description":"7","id":"7e2ecf48f558e705"},{"label":"classes","description":"Mistrz wiedzy, Wagabunda, Złota rączka","id":"83984d5be9d9e24f"},{"label":"experience","description":"0","id":"2de0ac22de0ea667"},{"label":"fabulaPoints","description":"2","id":"262801cc0791b9f9"}],
     

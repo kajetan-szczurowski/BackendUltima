@@ -83,13 +83,15 @@ exports.getCharactersIDMap = async function(){
 
 }
 
-exports.getHP = function(id){
+exports.getCharacterBar = function(id){
   const currentCharacter = characters.find(c => c.id === id);
   if (!currentCharacter) return;
-  const thumbnail = currentCharacter.thumbnail? currentCharacter.thumbnail : currentCharacter.about.graphic;
-  const maxHP = currentCharacter.maxHP? currentCharacter.maxHP : 37;
-  const currentHP = currentCharacter.currentHP? currentCharacter.currentHP : 21;
-  return {id: id, graphicUrl: thumbnail, maxHP: maxHP, currentHP: currentHP, name: currentCharacter.name};
+  const thumbnail = currentCharacter.thumbnail? currentCharacter.thumbnail : currentCharacter.graphicUrl;
+  const HP = {max: currentCharacter.maxHP? currentCharacter.maxHP : 37, current: currentCharacter.currentHP? currentCharacter.currentHP : 21};
+  const PM = {max: currentCharacter.maxMagic? currentCharacter.maxMagic : 37, current: currentCharacter.currentMagic? currentCharacter.currentMagic : 21};
+  const EP = {max: currentCharacter.maxEP? currentCharacter.maxEP : 37, current: currentCharacter.currentEP? currentCharacter.currentEP : 21};
+
+  return {id: id, graphicUrl: thumbnail, name: currentCharacter.name, HP: HP, PM: PM, EP: EP};
 }
 
 exports.setHP = function(characterID, hpPaylaod){
