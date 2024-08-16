@@ -12,7 +12,8 @@
 
     "graphicUrl":"https://s9.gifyu.com/images/SZnSX.png",
 
-    "relations": [{"label": "Twoja stara", "id": "2137-relation", "emotions": [0,0,0]}],
+    "relations": [{"label": "Twoja stara", "id": "2137-relation", "emotions": [0,0,0]},
+    {"label": "Marcin Najman", "id": "420-relation", "emotions": [0,0,0]}],
 
     "about": [{"label":"pronounce","description":"ona/jej","id":"0fcff79d897e89fd"},{"label":"agility","description":"d10","id":"77ed86816e4700bd"},{"label":"power","description":"d8","id":"ead742874309dc73"},{"label":"will","description":"d6","id":"9ecaa121e95a3154"},{"label":"inside","description":"d8","id":"4e8ebda7e5bfbad2"},{"label":"initiative","description":"0","id":"b7ecdfaf93a082ae"},{"label":"armor","description":"13","id":"690fbed230e81c47"},{"label":"magicalDefence","description":"9","id":"e2354b95a6e78aab"},{"label":"identity","description":"Księżniczka piratów","id":"dc8d5cfa2f98ff0e"},{"label":"theme","description":"Ambicja","id":"d4017d09cc08aaec"},{"label":"origin","description":"Wyspy Morag","id":"17bed71d1d8b37a1"},{"label":"level","description":"8","id":"d76c4dc0a61eb363"},{"label":"classes","description":"Mistrzyni broni, Łotrzyca, Strzelczyni wyborowa","id":"6be30de3af5821df"},{"label":"experience","description":"0","id":"d32aafa143adb77d"},{"label":"fabulaPoints","description":"5","id":"bfae8ba676ff9128"}],
 

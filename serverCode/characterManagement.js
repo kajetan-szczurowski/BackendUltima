@@ -156,9 +156,19 @@ exports.handleCharactersEdits = function(socket, auth){
     const currentCharacter = characters.find(c => c.id === characterID);
     if (!currentCharacter) return;
     const newID = crypto.randomBytes(8).toString("hex");
-    const newAttribute = {label: label.substring(0, MAX_LABEL_LENGTH), description: value.substring(0, MAX_DESCRIPTION_LENGTH), id: newID};
+
+    const newAttribute = attributesGroup === 'relations'? 
+      {label: label.substring(0, MAX_LABEL_LENGTH), id: newID, emotions: [0,0,0]}:
+      {label: label.substring(0, MAX_LABEL_LENGTH), description: value.substring(0, MAX_DESCRIPTION_LENGTH), id: newID};
+
     if (attributesGroup === 'skills') newAttribute['investedPoints'] = 0;
-    currentCharacter[attributesGroup].push(newAttribute);
+    if (attributesGroup === 'spells'){
+      newAttribute['magicCost'] = '???';
+      newAttribute['duration'] = '???';
+      newAttribute['target'] = '???';
+    }
+
+    currentCharacter[attributesGroup]? currentCharacter[attributesGroup].push(newAttribute): currentCharacter[attributesGroup] = [newAttribute];
     socket.emit('trigger-refresh');
     
 
