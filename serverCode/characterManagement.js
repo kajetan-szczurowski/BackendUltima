@@ -19,7 +19,6 @@ setInterval(saveCharactersManager, SAVE_CHARACTERS_INTERVAL_SECONDS * 1000)
 async function characterManagerInitialization(){
   // console.log('dzienDobry');
   charactersMap = await getCharactersIDMapLocal();
-  // console.log(charactersMap)
   await initialLoadCharacters();
   // const ahaID = await findDBid('420');
   // const dataBaseID = await findDBid('420');
@@ -55,14 +54,14 @@ function enqueueCharacterToSave(id, data){
 async function getCharactersIDMapLocal(){
 
     // DEVELOPEMENT MODE:
-    const defaultData = [
-      {name: 'Linan',   _id: '420', id: '420'},
-      {name: 'Kuka',   _id: '69', id: '69'},
-      {name: 'Profesor',   _id: '1312', id: '1312'},
-      {name: 'Kokuen',   _id: '666', id: '666'}
-    ];
+    // const defaultData = [
+    //   {name: 'Linan',   _id: '420', id: '420'},
+    //   {name: 'Kuka',   _id: '69', id: '69'},
+    //   {name: 'Profesor',   _id: '1312', id: '1312'},
+    //   {name: 'Kokuen',   _id: '666', id: '666'}
+    // ];
 
-    return defaultData;
+    // return defaultData;
   
 
   const data = await db.getCharactersMap();
@@ -131,20 +130,22 @@ exports.handleCharactersEdits = function(socket, auth){
   socket.on('edit-character-attribute', payload => {
     // const {success, arrayID, value, group, toChange, section} = characterEditMiddleware(payload);
     // console.log(payload)
-    const {success, arrayID, value, toChange, section} = characterEditMiddleware(payload);
+    const {success, arrayID, value, toChange, section, characterID} = characterEditMiddleware(payload);
     // console.log(success, arrayID, value, toChange, section)
     // return
     // const {success, arrayID, value, group, toChange, section} = characterEditMiddleware(payload);
     if (!success) return;
     toChange[arrayID][section] = value;
-    console.log(toChange[arrayID])
+    // console.log(toChange[arrayID])
+    saveCharacter(characterID, toChange);
     socket.emit('trigger-refresh');
   })
 
   socket.on('delete-character-attribute', payload => {
-    const {success, arrayID, toChange} = characterEditMiddleware(payload);
+    const {success, arrayID, toChange, characterID} = characterEditMiddleware(payload);
     if (!success) return;
     toChange.splice(arrayID, 1);
+    saveCharacter(characterID, toChange);
     socket.emit('trigger-refresh');
   })
 
@@ -169,6 +170,7 @@ exports.handleCharactersEdits = function(socket, auth){
     }
 
     currentCharacter[attributesGroup]? currentCharacter[attributesGroup].push(newAttribute): currentCharacter[attributesGroup] = [newAttribute];
+    saveCharacter(characterID, currentCharacter);
     socket.emit('trigger-refresh');
     
 
@@ -183,41 +185,13 @@ exports.handleCharactersEdits = function(socket, auth){
     const currentSkill = currentCharacter.skills.find(skill => skill.id === assetID);
     currentSkill.investedPoints = calculateInvestedPoints(currentSkill.investedPoints, order)
     currentCharacter.timeStamp = Date.now();
-    // saveCharacter(characterID, currentCharacter);
+    saveCharacter(characterID, currentCharacter);
     socket.emit('trigger-refresh');
   })
 
-
-
-  socket.on('new-roll', payload => { //to delete
-    const {label, value, family, userID, characterID} = newRollMiddleware(payload);
-    if (!auth.checkAuth(userID, characterID)) return;
-    const currentCharacter = characters.find(c => c.id === characterID);
-    if (!currentCharacter) return;
-    const foundRoll = currentCharacter.rolls.find(roll => roll.name.toLowerCase() === label.toLowerCase() && roll.family === family.toLowerCase());
-    if (foundRoll){
-       foundRoll.value = value;
-       foundRoll.family = family.toLowerCase();
-    }
-    else currentCharacter.rolls.push({name: label, value: value, family: family.toLowerCase()});
-    currentCharacter.timeStamp = Date.now();
-    saveCharacter(characterID, currentCharacter);
-
-  })
-
-  socket.on('refresh-character', () => socket.emit('trigger-refresh'));
 }
 
-function newRollMiddleware(payload){
-  const {label, value, family, userID, characterID} = payload;
-  return {
-   label: label.substring(0, MAX_INPUT_LENGTH),
-   value: value.substring(0, MAX_INPUT_LENGTH),
-   family: family.substring(0, MAX_INPUT_LENGTH),
-   userID: userID,
-   characterID: characterID
-  }
-}
+
 
 async function findDBid(characterID){
   const map = await getCharactersIDMapLocal();
@@ -235,20 +209,20 @@ async function saveCharacter(characterID, characterData){
 
 async function initialLoadCharacters(){
   if (!charactersMap) process.exit();
-  charactersMap.forEach(character => {
-    loadCharacter(character._id);
-  });
+  await Promise.all(charactersMap.map(char => loadCharacter(char._id)));
+  // charactersMap.forEach(character => {
+  //   loadCharacter(character._id);
+  // });
 
 
 
 }
 
 async function loadCharacter(id){
-  // const newCharacter = await db.getCharacter(id) ?? loadPlaceholderCharacter(id);
-  const newCharacter = loadPlaceholderCharacter(id);
+  const newCharacter = await db.getCharacter(id) ?? loadPlaceholderCharacter(id);
+  // const newCharacter = loadPlaceholderCharacter(id);
   if (!newCharacter) return;
   characters.push(newCharacter);
-  if (newCharacter.name === 'Ercor') console.log(newCharacter.rolls[4])
 }
 
 function loadPlaceholderCharacter(id){
@@ -278,7 +252,7 @@ function characterEditMiddleware(payload){
   // console.log('4')
   const newValue = prepareCharacterEditValue(value, attributeSection);
 
-  return {success: true, arrayID: id, value: newValue, group: attributesGroup, toChange: characterToChange[attributesGroup], section: attributeSection};
+  return {success: true, arrayID: id, value: newValue, group: attributesGroup, toChange: characterToChange[attributesGroup], section: attributeSection, characterID: characterID};
 
 }
 function wrongCall(){
@@ -293,11 +267,7 @@ function prepareCharacterEditValue(rawValue, section){
   return rawValue;
 }
 
-// function compileCharacterEditOrder(order){
-//   const splited = order.split('/');
-//   if (splited.length < 3) return {group: null, attributeID: null, section: null};
-//   return {group: splited[0], attributeID: splited[1], section: splited[2]};
-// }
+
 
 function calculateInvestedPoints(currentPoints, order){
   const DECREASE_ORDER = 'decrease';

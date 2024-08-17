@@ -1,5 +1,5 @@
 const axios = require('axios');
-const dotenv = require('dotenv').config();
+require('dotenv').config()
 
 //Mongo DB Actions Endpoints
 
@@ -17,7 +17,7 @@ const database = "Lets-Roll-One-15";
 const dataSource = "LetsRollOne";
 const dbURL = "https://data.mongodb-api.com/app/data-sqxht/endpoint/data/v1/action/";
 
-const dbApiKey = "secret";
+const dbApiKey = process.env.DB_API_KEY;
 const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Request-Headers': '*',
@@ -27,9 +27,9 @@ const headers = {
 // Let's roll one constants
 const MAP_DB_ID = '641651dcf7086793b9a0c6c9';
 const ASSETS_DB_ID = '64165385f7086793b9a0c6ca';
-const LRO_MECHANICS_DB_ID = '6682d9993edfc682deb7cbd3';
+const LRO_MECHANICS_DB_ID = '66c0fca4907af41084c3cf06';
 const MAP_URLs_COLLECTION = 'grafiki';
-const LRO_MECHANICS_DB_COLLECTION = 'LRO-mechanics';
+const LRO_MECHANICS_DB_COLLECTION = 'FABULA-ULTIMA-mechanics';
 
 
 
@@ -60,7 +60,7 @@ async function readOneDocument(id, collection){
 
 
 exports.getCharactersMap = async function(){
-    return await databaseRequestMiddleware(READ_ACTION, {'_id': '667c1d3359d23617c7342e1e', collection: 'characterStates'});
+    return await databaseRequestMiddleware(READ_ACTION, {'_id': '66c0d1f2907af410848430a0', collection: 'characterStates'});
 }
 
 exports.saveCharacter = async function(id, data){
@@ -80,7 +80,6 @@ exports.saveCharacter = async function(id, data){
 
 exports.getCharacter = async function(id){
     const character = await readOneDocument(id, 'characterStates');
-    if (character[0].name == 'Ercor') console.log(character[0].rolls[4])
     if (!character) return;
     return character[0];
 }
