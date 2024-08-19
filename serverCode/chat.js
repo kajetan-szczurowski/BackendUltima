@@ -19,7 +19,9 @@ exports.handleSocketChat = function(io, socket){
 function handleChat(payload){
     const processed = processChatMessage(payload);
     if (!processed) return;
-    appendMessage(processed);
+    const toAppend = {...processed};
+    if (payload.color) toAppend.color = payload.color;
+    appendMessage(toAppend);
     return messages;
 }
 

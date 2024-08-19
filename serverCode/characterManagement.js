@@ -183,6 +183,8 @@ exports.handleCharactersEdits = function(socket, auth){
   socket.on('new-graphic', payload => {
     const {userID, characterID, value} = {...payload};
     if (!auth.checkAuth(userID, characterID)) return;
+    if (!value) return;
+    if (value.length > 1000) return;
     const currentCharacter = characters.find(c => c.id === characterID);
     if (!currentCharacter) return;
     currentCharacter.graphicUrl = value;

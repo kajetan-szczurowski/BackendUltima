@@ -58,6 +58,7 @@ async function getAuthorization(){
     auth = authorization.auth;
     GM_ID = authorization.GM_ID;
     nameIDsMap = authorization.nameIDsMap;
+    // console.log(authorization)
     // console.log(GM_ID)
 }
 
