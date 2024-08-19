@@ -59,7 +59,6 @@ exports.handleCombat = function (io, socket) {
         const index = characterBars.findIndex(c => c.id === characterID);
         if (index === -1){
             const newBar = character.getCharacterBar(characterID);
-            console.log(newBar)
             characterBars.push(newBar);
         }
         else  removeCharacterBar(index);
@@ -78,6 +77,7 @@ exports.handleCombat = function (io, socket) {
         if (!toChange) return;
         toChange[section].max = max;
         toChange[section].current = value;
+        character.setBars(characterID, exportSavingPayload(toChange));
         io.emit('character-bars', characterBars);
     })
 
@@ -93,6 +93,16 @@ exports.handleCombat = function (io, socket) {
         io.emit('clocks-data', clocks);
     });
 
+}
+
+function exportSavingPayload(barsData){
+   return   {maxHP: barsData.HP.max,
+            currentHP: barsData.HP.current,
+            maxMagic: barsData.PM.max,
+            currentMagic: barsData.PM.current,
+            maxEP: barsData.EP.max,
+            currentEP: barsData.EP.current
+            }
 }
 
 function addClock(clockLabel, segments){
@@ -121,7 +131,7 @@ function decreaseClock(arrayID){
 }
 
 function removeCharacterBar(arrayIndex){
-    const currentCharacter = characterBars[arrayIndex];
+    // const currentCharacter = characterBars[arrayIndex];
     // character.setHP(currentCharacter.id, {maxHP: currentCharacter.maxHP, currentHP: currentCharacter.currentHP});
     characterBars.splice(arrayIndex, 1);
 }

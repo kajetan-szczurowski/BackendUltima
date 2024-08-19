@@ -8,7 +8,7 @@ let charactersMap;
 characterManagerInitialization();
 
 const charactersToSave = [];
-const SAVE_CHARACTERS_INTERVAL_SECONDS = 30;
+const SAVE_CHARACTERS_INTERVAL_SECONDS = 5;
 const MAX_INPUT_LENGTH = 30;
 const MAX_DESCRIPTION_LENGTH = 2000;
 const MAX_LABEL_LENGTH = 100;
@@ -30,7 +30,7 @@ function saveCharactersManager(){
   const toDelete = [];
 
   charactersToSave.forEach(character => {
-    // if (character.order = 'save-to-db') db.saveCharacter(character.id, character.data);
+    if (character.order = 'save-to-db') db.saveCharacter(character.id, character.data);
     toDelete.push(character.id);
   });
 
@@ -93,11 +93,15 @@ exports.getCharacterBar = function(id){
   return {id: id, graphicUrl: thumbnail, name: currentCharacter.name, HP: HP, PM: PM, EP: EP};
 }
 
-exports.setHP = function(characterID, hpPaylaod){
+exports.setBars = function(characterID, barsPayload){
   const currentCharacter = characters.find(c => c.id === characterID);
   if (!currentCharacter) return;
-  currentCharacter.maxHP = hpPaylaod.maxHP;
-  currentCharacter.currentHP = hpPaylaod.currentHP;
+  currentCharacter.maxHP = barsPayload.maxHP;
+  currentCharacter.currentHP = barsPayload.currentHP;
+  currentCharacter.maxEP = barsPayload.maxEP;
+  currentCharacter.currentEP = barsPayload.currentEP;
+  currentCharacter.maxMagic = barsPayload.maxMagic;
+  currentCharacter.currentMagic = barsPayload.currentMagic;
   saveCharacter(characterID, currentCharacter);
 }
 
@@ -113,44 +117,31 @@ exports.getCharacter =  function(id){ // was (id, tokens)
 }
 
 exports.handleCharactersEdits = function(socket, auth){
-  // socket.on('delete-character-attribute', payload => {
-  //   const {userID, characterID, attribute, value} = {...payload};
-  //   if (!auth.checkAuth(userID, characterID)) return;
-  //   const characterToChange = characters.find(c => c.id === characterID || `"${c.id}"` === characterID);
-  //   const id = characterToChange.rolls.findIndex(el => el.name === attribute);
-  //   characterToChange.rolls.splice(id, 1);
-  //   const idToSave = characterID.replaceAll('"', '');
-  //   characterToChange.timeStamp = Date.now();
-  //   saveCharacter(idToSave, characterToChange);
-  //   socket.emit('trigger-refresh');
-  //   //TODO: merger with edit-character, delete code duplication
-
-  // })
 
   socket.on('edit-character-attribute', payload => {
     // const {success, arrayID, value, group, toChange, section} = characterEditMiddleware(payload);
     // console.log(payload)
-    const {success, arrayID, value, toChange, section, characterID} = characterEditMiddleware(payload);
+    const {success, arrayID, value, toChange, section, characterID, currentCharacter} = characterEditMiddleware(payload);
     // console.log(success, arrayID, value, toChange, section)
     // return
     // const {success, arrayID, value, group, toChange, section} = characterEditMiddleware(payload);
     if (!success) return;
     toChange[arrayID][section] = value;
     // console.log(toChange[arrayID])
-    saveCharacter(characterID, toChange);
+    saveCharacter(characterID, currentCharacter);
     socket.emit('trigger-refresh');
   })
 
   socket.on('delete-character-attribute', payload => {
-    const {success, arrayID, toChange, characterID} = characterEditMiddleware(payload);
+    const {success, arrayID, toChange, characterID, currentCharacter, group} = characterEditMiddleware(payload);
+    if (group === 'about') return;
     if (!success) return;
     toChange.splice(arrayID, 1);
-    saveCharacter(characterID, toChange);
+    saveCharacter(characterID, currentCharacter);
     socket.emit('trigger-refresh');
   })
 
   socket.on('new-character-attribute', payload => {
-    console.log(payload)
     const {userID, characterID, attributesGroup, value, label} = {...payload};
     if (!auth.checkAuth(userID, characterID)) return;
     if (!attributesGroup || !value || !label) return;
@@ -189,6 +180,16 @@ exports.handleCharactersEdits = function(socket, auth){
     socket.emit('trigger-refresh');
   })
 
+  socket.on('new-graphic', payload => {
+    const {userID, characterID, value} = {...payload};
+    if (!auth.checkAuth(userID, characterID)) return;
+    const currentCharacter = characters.find(c => c.id === characterID);
+    if (!currentCharacter) return;
+    currentCharacter.graphicUrl = value;
+    saveCharacter(characterID, currentCharacter);
+    socket.emit('trigger-refresh');
+  })
+
 }
 
 
@@ -206,6 +207,7 @@ async function saveCharacter(characterID, characterData){
   const dataBaseID = await findDBid(characterID);
   enqueueCharacterToSave(dataBaseID, characterData);
 }
+
 
 async function initialLoadCharacters(){
   if (!charactersMap) process.exit();
@@ -252,7 +254,7 @@ function characterEditMiddleware(payload){
   // console.log('4')
   const newValue = prepareCharacterEditValue(value, attributeSection);
 
-  return {success: true, arrayID: id, value: newValue, group: attributesGroup, toChange: characterToChange[attributesGroup], section: attributeSection, characterID: characterID};
+  return {success: true, arrayID: id, value: newValue, group: attributesGroup, toChange: characterToChange[attributesGroup], section: attributeSection, characterID: characterID, currentCharacter: characterToChange};
 
 }
 function wrongCall(){
