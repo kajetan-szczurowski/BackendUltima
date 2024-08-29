@@ -134,7 +134,9 @@ exports.handleCharactersEdits = function(socket, auth){
 
   socket.on('delete-character-attribute', payload => {
     const {success, arrayID, toChange, characterID, currentCharacter, group} = characterEditMiddleware(payload);
-    if (group === 'about') return;
+    if (!arrayID) return;
+    if (group === 'about') 
+      if (checkDeletionAllowance(toChange[arrayID]?.label)) return;
     if (!success) return;
     toChange.splice(arrayID, 1);
     saveCharacter(characterID, currentCharacter);
@@ -281,4 +283,10 @@ function calculateInvestedPoints(currentPoints, order){
   if (order === DECREASE_ORDER) return currentPoints - 1;
   if (order === INCREASE_ORDER) return currentPoints + 1;
   return currentPoints;
+}
+
+function checkDeletionAllowance(sectionName){
+  const editBlocked = [['pronounce', 'identity', 'origin', 'theme'], ['level', 'classes'], 
+  ['agility', 'power', 'will', 'inside'], ['fabulaPoints', 'initiative', 'armor', 'magicalDefence'] ].flat();
+  return editBlocked.includes(sectionName);
 }
