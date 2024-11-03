@@ -1,4 +1,10 @@
-# LRO new version - Server
+# LRO legacy version - Backend
 
-Server for new version of my LRO server ([frontend here](https://github.com/kajetan-szczurowski/LRO-new-version)). This project is on very early stage of development. There are mostly placeholders for future programs. Server will be using [Wanderer's Guide](https://wanderersguide.app) API for character management.
+One of the versions of the server made for  [GitHub - kajetan-szczurowski/LRO-new-version.](https://github.com/kajetan-szczurowski/LRO-new-version)
+
+ **Tech Stack:**
  
+ - Node js,
+ - Express JS,
+ - Socket IO,
+ - mongoDB.
